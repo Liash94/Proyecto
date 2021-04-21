@@ -6,8 +6,15 @@ class Categoria{
     private $nombre;
     private $db;
 
-    public function __construct(){
+    public function __construct($id = ''){
         $this->db = Database::connect();
+        if($id){
+            $reg = $this->db->query("SELECT * FROM categorias WHERE id = ".$id);
+            $categoria = $reg->fetch_object();
+            $this->id = $categoria->id;
+            $this->nombre = $categoria->nombre;
+        }
+        return $this;
     }
 
     function getId(){
@@ -26,10 +33,15 @@ class Categoria{
         $this->nombre = $this->db->real_escape_string($nombre);
     }
 
-    public function getAll(){
-        $categorias = $this->db->query("SELECT * FROM categorias ORDER BY id ASC;");
-
-        return $categorias;
+    public static function getAll(){
+        $categoria = new Categoria();
+        $reg = $categoria->db->query("SELECT id FROM categorias ORDER BY id ASC;");
+        $array = array();
+        while($cat = $reg->fetch_object()){
+            $aux = new Categoria($cat->id);
+            $array[$aux->getId()]=$aux; 
+        }
+        return $array;
     }
 
     public function save(){

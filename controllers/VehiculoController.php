@@ -27,19 +27,22 @@ class vehiculoController
         require_once 'views/vehiculos/crear.php';
     }
 
-    public function save(){
+    public function save()
+    {
 
         Utils::isAdmin();
-        if(isset($_POST)) {
 
+        var_dump($_POST);
+        die();
+        if (isset($_POST)) {
             $categoria_id = isset($_POST['categoria']) ? $_POST['categoria'] : false;
             $matricula = isset($_POST['matricula']) ? $_POST['matricula'] : false;
             $precio = isset($_POST['precio']) ? $_POST['precio'] : false;
             $marca = isset($_POST['marca']) ? $_POST['marca'] : false;
             $modelo = isset($_POST['modelo']) ? $_POST['modelo'] : false;
-            $stock = isset($_POST['stock']) ? $_POST['stock'] : false;
+            $stock = isset($_POST['stock']) ? $_POST['stock'] : off;
 
-            if($categoria_id && $matricula && $precio && $marca && $modelo && $stock){
+            if ($categoria_id && $matricula && $precio && $marca && $modelo) {
 
                 $vehiculo = new Vehiculo();
 
@@ -50,23 +53,35 @@ class vehiculoController
                 $vehiculo->setModelo($modelo);
                 $vehiculo->setStock($stock);
 
-               
-                $vehiculo->save();
 
+                $vehiculo->create();
             }
         }
-        header("Location:".base_url.'vehiculo/gestion');
+        header("Location:" . base_url . 'vehiculo/gestion');
     }
 
-    public function editar(){
-        var_dump($_GET);
-
+    public function editar()
+    {
+        $veh = new Vehiculo($_GET['id']);
+        $categorias = Categoria::getAll();
+        require_once 'views/vehiculos/editar.php';
     }
 
-    public function eliminar(){
+    public function update()
+    {
+        $veh = new Vehiculo($_POST['id']);
+        $veh->setCategoria_Id($_POST['categoria']);
+        $veh->setMatricula($_POST['matricula']);
+        $veh->setPrecio($_POST['precio']);
+        $veh->setMarca($_POST['marca']);
+        $veh->setModelo($_POST['modelo']);
+        $veh->setStock(($_POST['stock']) ? 1 : 0);
+        $veh->update();
+        header("Location:" . base_url . 'vehiculo/gestion');
+    }
+
+    public function eliminar()
+    {
         var_dump($_GET);
-        
     }
 }
-
-  

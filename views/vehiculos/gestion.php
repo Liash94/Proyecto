@@ -9,7 +9,7 @@
 <tr>
 
 <th>ID</th>
-<th>Categoria_ID</th>
+<th>Categoria</th>
 <th>Matricula</th>
 <th>Marca</th>
 <th>Modelo</th>
@@ -22,7 +22,7 @@
 <tr>
 
 <td><?=$veh->getId();?></td>
-<td><?=$veh->getCategoria_id();?></td>
+<td><?=$veh->getNombreCategoria();?></td>
 <td><?=$veh->getMatricula();?></td>
 <td><?=$veh->getMarca();?></td>
 <td><?=$veh->getModelo();?></td>
@@ -32,7 +32,7 @@
 <a href="<?=base_url?>vehiculo/eliminar?id=<?=$veh->getId()?>" class="button">Eliminar</a>
 </td>
 <td>
-<a href="<?=base_url?>vehiculo/editar?id=<?=$veh->getId()?>" class="button">Editar</a>
+<a href="<?=base_url?>vehiculo/editar&id=<?=$veh->getId()?>" class="button">Editar</a>
 </td>
 </tr>
 

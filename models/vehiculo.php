@@ -1,5 +1,7 @@
 <?php
 
+require('categoria.php');
+
 class Vehiculo
 {
 
@@ -111,6 +113,12 @@ class Vehiculo
     {
         $this->imagen = $imagen;
     }
+
+    public function getNombreCategoria()
+    {
+        $categoria = new Categoria($this->getCategoria_id());
+        return $categoria->getNombre();
+    }
     
     public static function getAll()
     {
@@ -131,7 +139,7 @@ class Vehiculo
         return $array;
     }
 
-    public function save(){
+    public function create(){
 
         $sql = "INSERT INTO vehiculos VALUES(NULL, {$this->getCategoria_id()}, '{$this->getMatricula()}', {$this->getPrecio()}, '{$this->getMarca()}','{$this->getModelo()}', {$this->getStock()}, NULL);";
         $save = $this->db->query($sql);
@@ -142,5 +150,24 @@ class Vehiculo
             $result = true;
         }
         return $result;
+    }
+
+    public function update()
+    {
+        $sql = sprintf("UPDATE vehiculos SET
+                            categoria_id = %d,
+                            matricula = '%s',
+                            precio = %d,
+                            marca = '%s',
+                            modelo = '%s',
+                            stock = %d,
+                            imagen = '%s'
+                        WHERE id = %d", 
+                        $this->getCategoria_id(), $this->getMatricula(), $this->getPrecio(), $this->getMarca(), $this->getModelo(), $this->getStock(), $this->getImagen(), $this->getId());
+        $result = $this->db->query($sql);
+        if ($result){
+            return true;
+        }
+        return false;
     }
 }
