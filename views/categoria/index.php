@@ -4,7 +4,7 @@
 
 <a href="<?=base_url?>/categoria/crear" class="button">Crear Categoria</a>
 
-<table border="1">
+<table class="table">
 <tr>
 <td>ID</td>
 <td>Nombre</td>

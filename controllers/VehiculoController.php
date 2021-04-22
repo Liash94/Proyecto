@@ -24,6 +24,7 @@ class vehiculoController
     {
 
         Utils::isAdmin();
+        $categorias = Categoria::getAll();
         require_once 'views/vehiculos/crear.php';
     }
 
@@ -31,16 +32,13 @@ class vehiculoController
     {
 
         Utils::isAdmin();
-
-        var_dump($_POST);
-        die();
         if (isset($_POST)) {
             $categoria_id = isset($_POST['categoria']) ? $_POST['categoria'] : false;
             $matricula = isset($_POST['matricula']) ? $_POST['matricula'] : false;
             $precio = isset($_POST['precio']) ? $_POST['precio'] : false;
             $marca = isset($_POST['marca']) ? $_POST['marca'] : false;
             $modelo = isset($_POST['modelo']) ? $_POST['modelo'] : false;
-            $stock = isset($_POST['stock']) ? $_POST['stock'] : off;
+            $stock = isset($_POST['stock']) ? $_POST['stock'] : false;
 
             if ($categoria_id && $matricula && $precio && $marca && $modelo) {
 
@@ -81,7 +79,16 @@ class vehiculoController
     }
 
     public function eliminar()
-    {
-        var_dump($_GET);
-    }
+     {
+      Utils::isAdmin();
+
+         if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $vehiculo = new Vehiculo();
+            $vehiculo->setId($id);
+            $vehiculo->delete();
+         header("Location:" . base_url . 'vehiculo/gestion');
+        }
+
+     }
 }

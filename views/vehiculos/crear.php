@@ -4,16 +4,14 @@
 
     <label for="categoria">Categoria</label>
 
-    <?php $categorias = Utils::showCategorias(); ?>
+    <?php  ?>
     <select name="categoria">
-        <?php while ($cat = $categorias->fetch_object()) : ?>
-
-            <option value="<?= $cat->id ?>">
-                <?= $cat->nombre ?>
+        <?php foreach($categorias as $cat) { ?>x
+            <option value="<?= $cat->getId() ?>">
+                <?= $cat->getNombre() ?>
             </option>
-        <?php endwhile; ?>
+        <?php } ?>
     </select>
-
 
     <label for="matricula"> Matricula</label>
     <input type="text" name="matricula" placeholder="Matricula" required>

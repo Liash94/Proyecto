@@ -5,10 +5,10 @@
 
 <a href="<?=base_url?>vehiculo/crear" class="button">Añadir vehiculo</a>
 
-<table border="1">
+<table>
 <tr>
 
-<th>ID</th>
+<th >ID</th>
 <th>Categoria</th>
 <th>Matricula</th>
 <th>Marca</th>
@@ -29,10 +29,10 @@
 <td><?=$veh->getPrecio();?></td>
 <td><?=$veh->getStock();?></td>
 <td>
-<a href="<?=base_url?>vehiculo/eliminar?id=<?=$veh->getId()?>" class="button">Eliminar</a>
+<a href="<?=base_url?>vehiculo/eliminar&id=<?=$veh->getId()?>" >Eliminar</a></button>
 </td>
 <td>
-<a href="<?=base_url?>vehiculo/editar&id=<?=$veh->getId()?>" class="button">Editar</a>
+<a href="<?=base_url?>vehiculo/eliminar&id=<?=$veh->getId()?>" >Editar</a></button>
 </td>
 </tr>
 
