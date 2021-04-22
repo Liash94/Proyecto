@@ -1,6 +1,6 @@
 <?php
 
-require('categoria.php');
+require_once ('categoria.php');
 
 class Vehiculo
 {
@@ -136,11 +136,23 @@ class Vehiculo
         $array = array();
 
         while($veh = $vehiculos->fetch_object()){
-            // var_dump($veh);
-            // die();
             $aux = new Vehiculo($veh->id);
             $array[$aux->getId()]=$aux;
 
+        }
+        return $array;
+    }
+
+    public static function getByCategoria($id) {
+        $sql = sprintf('SELECT * FROM vehiculos as v 
+                INNER JOIN categorias c on c.id = v.categoria_id
+                where c.id =%d', $id);
+        $veh = new Vehiculo();
+        $reg = $veh->db->query($sql);
+        $array = array();
+        while($v = $reg->fetch_object()){
+            $aux = new Vehiculo($v->id);
+            $array[$aux->getId()]=$aux;
         }
         return $array;
     }

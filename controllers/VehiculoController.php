@@ -9,7 +9,7 @@ class vehiculoController
     {
 
         $vehiculo = new Vehiculo();
-        $vehiculos = $vehiculo->getRandom(6);
+        $vehiculos = $vehiculo->getAll();
 
 
         require_once 'views/vehiculos/destacados.php';

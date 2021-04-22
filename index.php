@@ -27,6 +27,7 @@ if (isset($_GET['controller'])) {
     show_error();
     exit();
 }
+//var_dump($_GET['controller']);
 
 if (class_exists($nombre_controlador)) {
     $controlador = new $nombre_controlador();
@@ -34,9 +35,7 @@ if (class_exists($nombre_controlador)) {
     if (isset($_GET['action']) && method_exists($controlador, $_GET['action'])) {
         $action = $_GET['action'];
         $controlador->$action();
-
-    
-    }elseif(!isset($_GET['controller']) && !isset($_GET['action'])) {
+    } elseif (!isset($_GET['controller']) && !isset($_GET['action'])) {
         $action_default = action_default;
         $controlador->$action_default();
     } else {

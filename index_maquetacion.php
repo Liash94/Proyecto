@@ -31,12 +31,7 @@
         <!-- MENU AÑADIR ENLACES AUN -->
         <nav id="menu">
             <ul>
-                <li><a href="#"> Inicio</a></li>
-                <li><a href="#"> Motocicletas</a></li>
-                <li><a href="#"> Turismos</a></li>
-                <li><a href="#"> Furgonetas</a></li>
-                <li><a href="#"> Camiones</a></li>
-                <li><a href="#"> Contacto</a></li>
+                
              
             </ul>
         </nav>

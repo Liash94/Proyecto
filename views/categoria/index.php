@@ -10,12 +10,12 @@
 <td>Nombre</td>
 </tr>
 
-<?php while($cat = $categorias->fetch_object()): ?>
+<?php foreach($categorias as $cat){ ?>
 
 <tr>
-<td><?=$cat->id;?></td>
-<td><?=$cat->nombre;?></td>
+<td><?=$cat->getId();?></td>
+<td><?=$cat->getNombre();?></td>
 </tr>
 
-<?php endwhile; ?>
+<?php } ?>
 </table>

@@ -1,5 +1,7 @@
 <?php
 
+require_once 'models/categoria.php';
+
 class Utils
 {
     public static function deleteSesion($name)
@@ -21,11 +23,7 @@ class Utils
     }
 
     public static function showCategorias(){
-
-        require_once 'models/categoria.php';
-
-        $categoria = new Categoria();
-        $categorias = $categoria->getAll();
+        $categorias = Categoria::getAll();
         return $categorias;
     }
 }

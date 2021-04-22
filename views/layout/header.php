@@ -28,14 +28,14 @@
 
         <!-- MENU   ¿PONER CATEGORIAS CON UN WHILE? -->
     
-             <?php $categorias = Utils::showCategorias(); ?>
+            <?php $categorias = Utils::showCategorias(); ?>
             <nav id="menu">
             <ul>
                 <li><a href="#"> Inicio</a></li>
 
-                <?php for($cat as $categorias):{ ?>
-                <li><a href="<?=base_url?>categoria/ver&id=<?=$cat->id?>"><?=$cat->nombre?></a></li>
-                <?php }; ?>
+                <?php foreach($categorias as $cat){?>
+                <li><a href="<?=base_url?>categoria/ver&id=<?=$cat->getId()?>"><?=$cat->getNombre()?></a></li>
+                <?php } ?>
              
 
                 <li><a href="#"> Contacto</a></li>

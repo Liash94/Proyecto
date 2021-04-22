@@ -2,7 +2,7 @@
 #Activar rewrite engine
 
 RewriteEngine on 
-ErrorDocument 404 http://localhost/Proyecto%202.0/error/index
+ErrorDocument 404 http://localhost/Proyecto/error/index
 
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f

@@ -15,10 +15,9 @@ class categoriaController{
 
     public function ver(){
         if(isset($_GET['id'])){
-            var_dump($_GET['id']);
+            $vehiculos = Vehiculo::getByCategoria($_GET['id']);
         }
-
-        require_once 'views/categoria/ver.php';
+        require_once 'views/categoria/gestion.php';
     }
 
     public function crear(){
