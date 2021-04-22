@@ -120,6 +120,12 @@ class Vehiculo
         return $categoria->getNombre();
     }
     
+    public function getRandom($limit)
+    {
+        $vehiculos = $this->db->query("SELECT * FROM vehiculos ORDER BY RAND() LIMIT $limit");
+        return $vehiculos;
+
+    }
     public static function getAll()
     {
 

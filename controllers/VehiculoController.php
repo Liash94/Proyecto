@@ -8,6 +8,10 @@ class vehiculoController
     public function index()
     {
 
+        $vehiculo = new Vehiculo();
+        $vehiculos = $vehiculo->getRandom(6);
+
+
         require_once 'views/vehiculos/destacados.php';
     }
 
