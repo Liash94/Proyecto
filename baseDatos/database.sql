@@ -2,18 +2,29 @@ CREATE DATABASE candc_rent_a_car;
 
 USE candc_rent_a_car;
 
+CREATE TABLE roles(
+    id INT(255) auto_increment not null,
+    nombre VARCHAR(100) not null,
+
+    CONSTRAINT pk_roles PRIMARY KEY (id)
+)ENGINE=InnoDb;
+
+INSERT INTO roles VALUES(1, 'admin');
+INSERT INTO roles VALUES(2, 'user');
+
 CREATE TABLE usuarios(
     id INT(255) auto_increment not null,
     nombre VARCHAR(100) not null,
     apellidos VARCHAR (255),
     DNI VARCHAR (255) not null,
     email VARCHAR (255) not null,
-    rol VARCHAR(15),
+    rol int(255),
     password VARCHAR(255) not null,
     telefono int(15) not null,
 
-    CONSTRAINT pk_usuarios PRIMARY KEY(Id),
-    CONSTRAINT uq_email UNIQUE(email)
+    CONSTRAINT pk_usuarios PRIMARY KEY(id),
+    CONSTRAINT uq_email UNIQUE(email),
+    CONSTRAINT fk_rol FOREIGN KEY (rol) REFERENCES roles(id)
 
 )ENGINE=InnoDb;
 

@@ -1,5 +1,7 @@
 <?php
 
+require_once('rol.php');
+
 class Usuario{
 
     private $id;
@@ -12,8 +14,22 @@ class Usuario{
     private $telefono;
     private $db;
 
-    public function __construct(){
+    public function __construct($id = ""){
         $this->db= Database::connect();
+
+        if($id){
+            $reg = $this->db->query("SELECT * FROM usuarios WHERE id = ". $id);
+            $usu = $reg->fetch_object();
+            $this->id = $usu->id;
+            $this->nombre = $usu->nombre;
+            $this->apellidos = $usu->apellidos;
+            $this->DNI = $usu->DNI;
+            $this->email = $usu->email;
+            $this->rol = $usu->rol;
+            $this->password = $usu->password;
+            $this->telefono = $usu->telefono;
+        }
+        return $this;
 
     }
     
@@ -82,8 +98,35 @@ class Usuario{
         $this->telefono = $this->db->real_escape_string($telefono);
     }
 
+    function getRolNombre(){
+        $rol = new Rol($this->getRol());
+        return $rol->getNombre();
+    }
+
+    public static function getAll()
+    {
+        $usuario = new Usuario();
+
+        $reg = $usuario->db->query("SELECT id FROM usuarios ORDER BY id ASC");
+
+        $array = array();
+
+        while($usu = $reg->fetch_object()){
+            $aux = new Usuario($usu->id);
+            $array[$aux->getId()]=$aux;
+        }
+        return $array;
+    }
+
     public function save(){
-        $sql = "INSERT INTO usuarios VALUES(NULL, '{$this->getNombre()}', '{$this->getApellidos()}', '{$this->getDNI()}', '{$this->getEmail()}', 'user', '{$this->getPassword()}', '{$this->getTelefono()}');";
+        $sql = sprintf("INSERT INTO usuarios VALUES(NULL, '%s', '%s','%s','%s',%d,'%s',%d)",
+                            $this->getNombre(),
+                            $this->getApellidos(),
+                            $this->getDNI(),
+                            $this->getEmail(),
+                            ($this->getRol()) ? $this->getRol() : 2,
+                            $this->getPassword(),
+                            $this->getTelefono());
         $save = $this->db->query($sql);
 
         $result = false;
@@ -91,10 +134,33 @@ class Usuario{
         if($save){
             $result = true;
 
-        }else{
-
         }
         return $result;
+    }
+
+    public function update() {
+        $sql = sprintf("UPDATE usuarios SET nombre = '%s',
+                                            apellidos = '%s',
+                                            DNI = '%s',
+                                            email = '%s',
+                                            rol = %d,
+                                            `password` = '%s',
+                                            telefono = %d
+                                            WHERE id = %d",
+                            $this->getNombre(),
+                            $this->getApellidos(),
+                            $this->getDNI(),
+                            $this->getEmail(),
+                            ($this->getRol()) ? $this->getRol() : 2,
+                            $this->getPassword(),
+                            $this->getTelefono(),
+                            $this->getId());
+        return $this->db->query($sql);
+    }
+
+    public function delete() {
+        $sql = sprintf('DELETE FROM usuarios where id = %d', $this->getId());
+        return $this->db->query($sql);
     }
 
     public function login(){
