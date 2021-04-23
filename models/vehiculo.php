@@ -160,7 +160,7 @@ class Vehiculo
 
     public function create(){
 
-        $sql = "INSERT INTO vehiculos VALUES(NULL, {$this->getCategoria_id()}, '{$this->getMatricula()}', {$this->getPrecio()}, '{$this->getMarca()}','{$this->getModelo()}', {$this->getStock()}, NULL);";
+        $sql = "INSERT INTO vehiculos VALUES(NULL, {$this->getCategoria_id()}, '{$this->getMatricula()}', {$this->getPrecio()}, '{$this->getMarca()}','{$this->getModelo()}', {$this->getStock()}, '{$this->getImagen()}');";
         $save = $this->db->query($sql);
 
         $result = false;

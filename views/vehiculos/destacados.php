@@ -1,16 +1,25 @@
 <!-- CENTRAL -->
 
+<!-- TUVE QUE METERLE UN WHILE PORQUE ESTO NO ANDABA O NO SUPE HACERLO ANDAR xD-->
+
 <h1> Algunos vehiculos </h1>
 
-<?php foreach ($vehiculos as $veh) { ?>
-
+<!-- <//?php foreach ($vehiculos as $veh) { ?> -->
+<?php while ($veh = $vehiculos->fetch_object()) : ?>
     <div class="vehicle">
+        <div class="tarjeta">
 
-        <figure class="figure">
-            <img src="assets/css/imagenes/100x100.gif" alt="Imagen de Prueba">
-            <figcaption class="figure-caption text-end"><?= $veh->getMarca() . " " . $veh->getModelo() . " " . $veh->getPrecio() ?></figcaption>
-        </figure>
+            <figure class="figure">
+                <img src="<?= base_url ?>uploads/images<?= $veh->imagen ?>" alt="Imagen de Prueba">
 
-      <a class="button" href="#">Reservar</a>
+                <figcaption class="figure-caption text-end"><?= $veh->marca . " " . $veh->modelo . " " . $veh->precio ?></figcaption>
+            </figure>
+
+
+            <a class="button" href="#">Reservar</a>
+        </div>
     </div>
-<?php } ?>
+
+<?php endwhile; ?>
+<!--
+<//?php } ?> -->

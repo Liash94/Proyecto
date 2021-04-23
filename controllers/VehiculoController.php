@@ -9,8 +9,9 @@ class vehiculoController
     {
 
         $vehiculo = new Vehiculo();
-        $vehiculos = $vehiculo->getAll();
+        $vehiculos = $vehiculo->getRandom(6);
 
+       
 
         require_once 'views/vehiculos/destacados.php';
     }
@@ -55,6 +56,22 @@ class vehiculoController
                 $vehiculo->setModelo($modelo);
                 $vehiculo->setStock($stock);
 
+                // Imagenes
+                $file = $_FILES['imagen'];
+                $filename = $file['name'];
+                $mimetype = $file['type'];
+
+                
+                if($mimetype == "image/jpg" || $mimetype == "image/jpeg" || $mimetype == "image/png" ||  $mimetype == "image/gif"){
+
+                    if(!is_dir('uploads/images')){
+                        mkdir('uploads/images', 0777, true);
+                    }
+
+                    move_uploaded_file($file['tmp_name'], 'uploads/images'.$filename);
+                    $vehiculo->setImagen($filename);
+
+                }
 
                 $vehiculo->create();
             }
