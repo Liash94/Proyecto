@@ -6,6 +6,7 @@
 
 
 <table class="table">
+<thead>
         <tr>
 
             <th scope="col">ID</th>
@@ -31,12 +32,10 @@
             <td><?= $veh->getStock(); ?></td>
             <td>
                 <a class="btn btn-warning m-0" href="<?= base_url ?>vehiculo/editar&id=<?= $veh->getId() ?>">Editar</a></button>
-            </td>
-            <td>
                 <a class="btn btn-danger m-0" href="<?= base_url ?>vehiculo/eliminar&id=<?= $veh->getId() ?>">Eliminar</a></button>
             </td>
         </tr>
 
     <?php } ?>
 </table>
-<a href="<?= base_url ?>vehiculo/crear" class="btn btn-success">Añadir vehiculo</a>
+<a class="btn btn-success" href="<?= base_url ?>vehiculo/crear" >Añadir vehiculo</a>

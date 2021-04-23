@@ -191,7 +191,7 @@ class Vehiculo
 
      public function delete(){
 
-        $sql = "DELETE FROM vehiculos WHERE id={$this->id}";
+       $sql = "DELETE FROM vehiculos WHERE id={$this->id}";
        $delete = $this->db->query($sql);
 
         $result = false;
