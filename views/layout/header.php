@@ -34,7 +34,7 @@
         <?php $categorias = Utils::showCategorias(); ?>
         <nav id="menu">
             <ul>
-                <li><a href="#"> Inicio</a></li>
+                <li><a href="<?=base_url?>"> Inicio</a></li>
 
                 <?php foreach ($categorias as $cat) { ?>
                     <li><a href="<?= base_url ?>categoria/ver&id=<?= $cat->getId() ?>"><?= $cat->getNombre() ?></a></li>
