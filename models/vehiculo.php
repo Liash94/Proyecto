@@ -144,15 +144,16 @@ class Vehiculo
     }
 
     public static function getByCategoria($id) {
-        $sql = sprintf('SELECT * FROM vehiculos as v 
-                INNER JOIN categorias c on c.id = v.categoria_id
+        $sql = sprintf('SELECT v.id FROM vehiculos as v 
+                LEFT JOIN categorias c on c.id = v.categoria_id
                 where c.id =%d', $id);
         $veh = new Vehiculo();
         $reg = $veh->db->query($sql);
         $array = array();
+        
         while($v = $reg->fetch_object()){
             $aux = new Vehiculo($v->id);
-            $array[$aux->getId()]=$aux;
+            $array[$aux->getId()]= $aux;
         }
         return $array;
     }

@@ -1,6 +1,7 @@
 <?php
 
 require_once 'models/categoria.php';
+require_once 'models/vehiculo.php';
 
 class categoriaController{
     

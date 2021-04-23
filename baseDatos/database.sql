@@ -61,8 +61,8 @@ CREATE TABLE reserva(
     id int(255) auto_increment not null,
     id_usuarios int (255) not null,
     id_vehiculos int(255) not null,
-    coste float(200,2) not null,
     Fecha_reserva date,
+    dias int(3) not null,
     estado VARCHAR(20) not null,
 
     CONSTRAINT pk_reserva PRIMARY KEY(Id),
@@ -70,3 +70,16 @@ CREATE TABLE reserva(
     CONSTRAINT fk_reserva_vehiculos FOREIGN KEY(id_vehiculos) REFERENCES vehiculos(id)
 
 )ENGINE=InnoDb;
+
+INSERT INTO vehiculos VALUES(null,1, '7777AUX', '50', 'Renault', 'Clio', 1, '');
+INSERT INTO vehiculos VALUES(null,1, '7777AUX', '50', 'Renault', 'Clio', 1, '');
+INSERT INTO vehiculos VALUES(null,1, '7777AUX', '50', 'Renault', 'Clio', 1, '');
+INSERT INTO vehiculos VALUES(null,2, '7777AUX', '50', 'Renault', 'Clio', 1, '');
+INSERT INTO vehiculos VALUES(null,2, '7777AUX', '50', 'Renault', 'Clio', 1, '');
+INSERT INTO vehiculos VALUES(null,2, '7777AUX', '50', 'Renault', 'Clio', 1, '');
+INSERT INTO vehiculos VALUES(null,3, '7777AUX', '50', 'Renault', 'Clio', 1, '');
+INSERT INTO vehiculos VALUES(null,3, '7777AUX', '50', 'Renault', 'Clio', 1, '');
+INSERT INTO vehiculos VALUES(null,3, '7777AUX', '50', 'Renault', 'Clio', 1, '');
+INSERT INTO vehiculos VALUES(null,4, '7777AUX', '50', 'Renault', 'Clio', 1, '');
+INSERT INTO vehiculos VALUES(null,4, '7777AUX', '50', 'Renault', 'Clio', 1, '');
+INSERT INTO vehiculos VALUES(null,4, '7777AUX', '50', 'Renault', 'Clio', 1, '');
