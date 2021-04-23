@@ -58,4 +58,28 @@ class Rol{
         return $result;
     
     }
+
+    public function update()
+    {
+        $sql = "UPDATE roles SET nombre='{$this->getNombre()}' WHERE id={$this->getId()};";
+                      
+        $result = $this->db->query($sql);
+        if ($result){
+            return true;
+        }
+        return false;
+    }
+    
+    public function delete(){
+
+        $sql = "DELETE FROM roles WHERE id={$this->id}";
+        $delete = $this->db->query($sql);
+ 
+        $result = false;
+        if($delete){
+            $result = true;
+        }
+        return $result;
+     }
+    
 }

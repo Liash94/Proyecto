@@ -1,14 +1,8 @@
 <h1> Gestion de vehiculos </h1>
 
-<!--DAR ESTILO A LA TABLA CON BOOTSTRAP!!!!!! -->
-
-
-
-
 <table class="table">
 <thead>
         <tr>
-
             <th scope="col">ID</th>
             <th scope="col">Categoria</th>
             <th scope="col">Matricula</th>
@@ -22,7 +16,6 @@
     <?php foreach ($vehiculos as $veh) { ?>
 
         <tr>
-
             <th scope="row"><?= $veh->getId(); ?></th>
             <td><?= $veh->getNombreCategoria(); ?></td>
             <td><?= $veh->getMatricula(); ?></td>
