@@ -1,36 +1,45 @@
 <h1> Añadir Nuevos Vehiculos </h1>
 
-<form action="<?=base_url?>vehiculo/save" method="POST" enctype="multipart/form-data">
+<form action="<?= base_url ?>vehiculo/save" method="POST" enctype="multipart/form-data">
 
-    <label for="categoria">Categoria</label>
+    <div class="mb-3">
+        <label for="categoria" class="form-label">Categoria</label>
 
-    <?php  ?>
-    <select name="categoria">
-        <?php foreach($categorias as $cat) { ?>x
+        <?php  ?>
+        <select name="categoria" class="form-select form-select-sm mb-3" aria-label=".form-select-lg example">
+            <?php foreach ($categorias as $cat) { ?>x
             <option value="<?= $cat->getId() ?>">
                 <?= $cat->getNombre() ?>
             </option>
         <?php } ?>
-    </select>
+        </select>
+    </div>
 
-    <label for="matricula"> Matricula</label>
-    <input type="text" name="matricula" placeholder="Matricula" required>
+    <div class="mb-3">
+        <label for="matricula" class="form-label"> Matricula</label>
+        <input type="text" name="matricula" placeholder="Matricula" class="form-control form-control-sm" required>
+    </div>
 
-    <label for="marca"> Marca</label>
-    <input type="text" name="marca" placeholder="Marca" required>
-
-    <label for="modelo"> Modelo</label>
-    <input type="text" name="modelo" placeholder="Modelo" required>
-
-    <label for="precio"> Precio</label>
-    <input type="text" name="precio" placeholder="Precio" required>
-
-    <label for="Stock"> Stock</label>
-    <input type="number" name="stock" required>
-
-    <label for="imagen">Imagen</label>
-    <input type="file" name="imagen">
-
+    <div class="mb-3">
+        <label for="marca" class="form-label"> Marca</label>
+        <input type="text" name="marca" placeholder="Marca" class="form-control form-control-sm" required>
+    </div>
+    <div class="mb-3">
+        <label for="modelo" class="form-label"> Modelo</label>
+        <input type="text" name="modelo" placeholder="Modelo" class="form-control form-control-sm" r equired>
+    </div>
+    <div class="mb-3">
+        <label for="precio" class="form-label"> Precio</label>
+        <input type="text" name="precio" placeholder="Precio" class="form-control form-control-sm" required>
+    </div>
+    <div class="mb-3">
+        <label for="Stock" class="form-label"> Stock</label>
+        <input type="number" name="stock" class="form-control form-control-sm" required>
+    </div>
+    <div class="mb-3">
+        <label for="imagen" class="form-label">Imagen</label>
+        <input type="file" name="imagen">
+    </div>
     <input type="submit" value="Añadir">
 
 </form>

@@ -3,38 +3,40 @@
 <!--DAR ESTILO A LA TABLA CON BOOTSTRAP!!!!!! -->
 
 
-<a href="<?=base_url?>vehiculo/crear" class="button">Añadir vehiculo</a>
 
-<table>
-<tr>
 
-<th >ID</th>
-<th>Categoria</th>
-<th>Matricula</th>
-<th>Marca</th>
-<th>Modelo</th>
-<th>Precio</th>
-<th>Stock</th>
-</tr>
+<table class="table">
+        <tr>
 
-<?php foreach($vehiculos as $veh){ ?>
+            <th scope="col">ID</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Matricula</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Stock</th>
+        </tr>
+    </thead>
 
-<tr>
+    <?php foreach ($vehiculos as $veh) { ?>
 
-<td><?=$veh->getId();?></td>
-<td><?=$veh->getNombreCategoria();?></td>
-<td><?=$veh->getMatricula();?></td>
-<td><?=$veh->getMarca();?></td>
-<td><?=$veh->getModelo();?></td>
-<td><?=$veh->getPrecio();?></td>
-<td><?=$veh->getStock();?></td>
-<td>
-<a href="<?=base_url?>vehiculo/eliminar&id=<?=$veh->getId()?>" >Eliminar</a></button>
-</td>
-<td>
-<a href="<?=base_url?>vehiculo/eliminar&id=<?=$veh->getId()?>" >Editar</a></button>
-</td>
-</tr>
+        <tr>
 
-<?php }?>
+            <th scope="row"><?= $veh->getId(); ?></th>
+            <td><?= $veh->getNombreCategoria(); ?></td>
+            <td><?= $veh->getMatricula(); ?></td>
+            <td><?= $veh->getMarca(); ?></td>
+            <td><?= $veh->getModelo(); ?></td>
+            <td><?= $veh->getPrecio(); ?></td>
+            <td><?= $veh->getStock(); ?></td>
+            <td>
+                <a class="btn btn-warning m-0" href="<?= base_url ?>vehiculo/editar&id=<?= $veh->getId() ?>">Editar</a></button>
+            </td>
+            <td>
+                <a class="btn btn-danger m-0" href="<?= base_url ?>vehiculo/eliminar&id=<?= $veh->getId() ?>">Eliminar</a></button>
+            </td>
+        </tr>
+
+    <?php } ?>
 </table>
+<a href="<?= base_url ?>vehiculo/crear" class="btn btn-success">Añadir vehiculo</a>

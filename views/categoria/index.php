@@ -2,20 +2,25 @@
 
 <h1> Gestionar Categorias </h1>
 
-<a href="<?=base_url?>/categoria/crear" class="button">Crear Categoria</a>
+
 
 <table class="table">
+<thead>
 <tr>
-<td>ID</td>
-<td>Nombre</td>
+<th scope="col">ID</th>
+<th scope="col">Nombre</th>
 </tr>
+</thead>
+
 
 <?php foreach($categorias as $cat){ ?>
 
 <tr>
-<td><?=$cat->getId();?></td>
+<th scope="row"><?=$cat->getId();?></th>
 <td><?=$cat->getNombre();?></td>
 </tr>
 
 <?php } ?>
 </table>
+
+<a href="<?=base_url?>/categoria/crear" class="btn btn-success">Crear Categoria</a>
