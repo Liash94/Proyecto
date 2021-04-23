@@ -65,7 +65,6 @@ class vehiculoController
     public function editar()
     {
         $veh = new Vehiculo($_GET['id']);
-        $categorias = Categoria::getAll();
         require_once 'views/vehiculos/editar.php';
     }
 

@@ -1,17 +1,52 @@
 <?php
 
 require_once 'models/usuario.php';
+require_once 'models/rol.php';
 
 class usuarioController{
     
-    public function index(){
-        echo "Controlador usuarios, Accion index";
+    public function index()
+    {
+        $usuarios = Usuario::getAll();
+        require_once 'views/usuario/listado.php';
     }
 
     public function registro(){
 
         require_once 'views/usuario/registro.php';
 
+    }
+
+    public function crear()
+    {
+        $roles = Rol::getAll();
+        require_once 'views/usuario/crear.php';
+    }
+
+    public function editar(){
+        $roles = Rol::getAll();
+        $usuario = new Usuario($_GET['id']);
+        require_once 'views/usuario/edit.php';
+    }
+
+    public function update()
+    {
+        $usu = new Usuario($_POST['id']);
+        $usu->setNombre($_POST['nombre']);
+        $usu->setApellidos($_POST['apellidos']);
+        $usu->setDNI($_POST['DNI']);
+        $usu->setEmail($_POST['email']);
+        $usu->setPassword($_POST['password']);
+        $usu->setTelefono($_POST['telefono']);
+        $usu->setRol($_POST['rol']);
+        $usu->update();
+        header("Location:" . base_url . 'usuario/index');
+    }
+
+    public function eliminar() {
+        $usuario = new Usuario($_GET['id']);
+        $usuario->delete();
+        header("Location:".base_url. "usuario/index");
     }
 
     public function save(){
@@ -37,7 +72,7 @@ class usuarioController{
         }else{
             $_SESSION['register'] = "failed";
         }
-        header("Location:".base_url.'usuario/registro');
+        header("Location:".base_url);
 
     }
 
@@ -56,7 +91,7 @@ class usuarioController{
            if($identity && is_object($identity)){
                $_SESSION['identity'] = $identity;
 
-               if($identity->rol == 'admin'){
+               if($identity->rol == 1){
                    $_SESSION['admin'] = true; 
                }
            }else{
