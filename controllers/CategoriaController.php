@@ -16,9 +16,21 @@ class categoriaController{
 
     public function ver(){
         if(isset($_GET['id'])){
-            $vehiculos = Vehiculo::getByCategoria($_GET['id']);
+            //$vehiculos = Vehiculo::getByCategoria($_GET['id']);
+            $id = $_GET['id'];
+
+            /* Conseguir la categoria */
+            $categoria = new Categoria();
+            $categoria->setId($id);
+            $categoria = $categoria->getOne();
+            
+
+            /* Conseguir vehiculo */
+            $vehiculo = new Vehiculo();
+            $vehiculo->setCategoria_id($id);
+            $vehiculos = $vehiculo->getAllCategory();
         }
-        require_once 'views/categoria/gestion.php';
+        require_once 'views/categoria/ver.php';
     }
 
     public function crear(){

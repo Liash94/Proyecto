@@ -16,6 +16,24 @@ class vehiculoController
         require_once 'views/vehiculos/destacados.php';
     }
 
+    // Vista individual de cada Vehiculo 
+
+    public function ver(){
+
+        /*
+        $veh = new Vehiculo($_GET['id']);
+        */
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $vehiculo = new Vehiculo();
+            $vehiculo->setId($id);
+
+            $veh = $vehiculo->getOne();
+
+        }        
+        require_once 'views/vehiculos/ver.php';
+    }
+
     public function gestion()
     {
 

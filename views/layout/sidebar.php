@@ -2,6 +2,7 @@
 
  <aside id="lateral">
 
+ 
      <div id="login" class="block_aside">
 
 
@@ -11,17 +12,16 @@
 
                  <div class="mb-3">
                      <label for="email" class="form-label">Email </label>
-                     <input type=" email" name="email">
+                     <input type=" email" name="email" class="form-control form-control-sm">
                  </div>
 
                  <div class="mb-3">
-                     <label for="password" >Contraseña </label>
-                     <input type="password" name="password">
+                     <label for="password" class="form-label">Contraseña </label>
+                     <input type="password" name="password" class="form-control form-control-sm">
                  </div>
 
                  <div class="mb-3">
                      <input type="submit" value="Enviar">
-                 </div>
              </form>
 
          <?php else : ?>

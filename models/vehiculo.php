@@ -119,6 +119,12 @@ class Vehiculo
         $categoria = new Categoria($this->getCategoria_id());
         return $categoria->getNombre();
     }
+
+    	
+	public function getOne(){
+		$vehiculo = $this->db->query("SELECT * FROM vehiculos WHERE id = {$this->getId()}");
+		return $vehiculo->fetch_object();
+	}
     
     public function getRandom($limit)
     {
@@ -141,6 +147,17 @@ class Vehiculo
 
         }
         return $array;
+    }
+
+    public function getAllCategory(){
+
+        $sql = "SELECT v.*, c.nombre FROM vehiculos v "
+                . "INNER JOIN categorias c ON c.id = v.categoria_id "
+                . "WHERE v.categoria_id = {$this->getCategoria_id()} "
+                . "ORDER BY id DESC";
+        $vehiculos = $this->db->query($sql);
+        return $vehiculos;
+
     }
 
     public static function getByCategoria($id) {
