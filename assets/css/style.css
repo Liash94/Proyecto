@@ -253,26 +253,26 @@ button{
 
 /* Vehiculos */
 
-.vehicle{
-    width: 30%;
-    float: left;
-    margin-left: 10px;
-    margin-right: 10px;       
-    text-align: center;
-}
+.box{
 
-.tarjeta img{
-    width: fit-content;
-    height: fit-content;
-    margin-bottom: 10px;
+    width: 99%;
     
 }
 
-.tarjeta{
-    width: 300px !important;
-    height: 400px !important;
-    border: 2px solid red;
-   
+.vehicle{
+
+   display: block;
+   float: left;
+
+   width: 30%;
+   height: 300px;
+   border: 1px solid red;
+   padding: 20px;
+
+}
+
+.vehicle figure img{
+    width: 100%;
 }
 .vehicle h2{
     font-size: 18px;
@@ -281,6 +281,7 @@ button{
 
 .vehicle a{
     margin-bottom: 10px;
+    color: white;
 }
 
 .detail-vehicle{
@@ -300,6 +301,20 @@ button{
     width: 100%;
     display: block;
     float: left;
+    margin: 0 auto;
+}
+
+.image img{
+    width: 100%;
+    display: block;
+    float: left;
+    margin: 0 auto;
+}
+
+#texto{
+    margin-top: 10px;
+    
+
 }
 
 .data{

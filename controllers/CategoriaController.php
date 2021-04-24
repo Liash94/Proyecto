@@ -16,7 +16,7 @@ class categoriaController{
 
     public function ver(){
         
-        Utils::isUser();
+        
         if(isset($_GET['id'])){
             //$vehiculos = Vehiculo::getByCategoria($_GET['id']);
             $id = $_GET['id'];

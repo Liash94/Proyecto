@@ -6,20 +6,22 @@
 
 <!-- <//?php foreach ($vehiculos as $veh) { ?> -->
 <?php while ($veh = $vehiculos->fetch_object()) : ?>
-    <div class="vehicle">
-        <div class="tarjeta">
 
-            <a href="<?=base_url?>vehiculo/ver&id=<?=$veh->id?>">
+    <div class="box">
+        <div class="vehicle">
+            <a href="<?= base_url ?>vehiculo/ver&id=<?= $veh->id ?>">
                 <figure class="figure">
-                    <img src="<?= base_url ?>uploads/images<?= $veh->imagen ?>" alt="Imagen de Prueba">
-
-                    <figcaption class="figure-caption text-end"><?= $veh->marca . " " . $veh->modelo . " " . $veh->precio ?></figcaption>
+                    <img class="rounded" src="<?= base_url ?>uploads/images<?= $veh->imagen ?>" alt="Imagen de Prueba">
+                    <figcaption id="texto" class="figure-caption text-end"><?= $veh->marca . " " . $veh->modelo . " " . $veh->precio ?></figcaption>
                 </figure>
             </a>
-
             <a class="button" href="#">Reservar</a>
         </div>
     </div>
+
+    
+
+
 
 <?php endwhile; ?>
 <!--
