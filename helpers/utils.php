@@ -22,6 +22,16 @@ class Utils
         }
     }
 
+    public static function isUser(){
+        if(!isset($_SESSION['user'])){
+            echo "<h2> Vista solo para usuarios <h2>";
+            header("Location:".base_url);
+        }else{
+            return true;
+        }
+    }
+
+
     public static function showCategorias(){
         $categorias = Categoria::getAll();
         return $categorias;

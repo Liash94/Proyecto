@@ -20,6 +20,7 @@ class vehiculoController
 
     public function ver(){
 
+        Utils::isUser();
         /*
         $veh = new Vehiculo($_GET['id']);
         */
