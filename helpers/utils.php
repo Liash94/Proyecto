@@ -1,6 +1,8 @@
 <?php
 
 require_once 'models/categoria.php';
+require_once 'models/reserva.php';
+require_once 'models/vehiculo.php';
 
 class Utils
 {
@@ -31,9 +33,25 @@ class Utils
         }
     }
 
-
     public static function showCategorias(){
         $categorias = Categoria::getAll();
         return $categorias;
     }
+
+    public static function checkReservas(){
+        $reservas = Reserva::getActivas();
+        foreach($reservas as $res) {
+            $d = strtotime($res->getFechaReserva() . ' +'. $res->getDias() . ' days');
+            
+            $date =  date('y-m-d', $d);
+            var_dump($date);
+            if ($date < date('y-m-d')){
+                $res->setEstado(0);
+                $res->update();
+                $vehiculo = new Vehiculo($res->getVehiculo_id());
+                $vehiculo->setStock(1);
+                $vehiculo->update(); 
+            }
+        }
+    }    
 }

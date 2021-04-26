@@ -1,4 +1,4 @@
-<h1> Formulario de reserva </h1>
+<h1> Mostrar reservas </h1>
 
 
  

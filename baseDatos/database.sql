@@ -64,6 +64,7 @@ CREATE TABLE reserva(
     Fecha_reserva date,
     dias int(3) not null,
     estado VARCHAR(20) not null,
+    coste VARCHAR(20) not null,
 
     CONSTRAINT pk_reserva PRIMARY KEY(Id),
     CONSTRAINT fk_reserva_usuarios FOREIGN KEY(id_usuarios) REFERENCES usuarios(id),    
