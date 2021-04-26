@@ -5,7 +5,7 @@
     <div class="detail-vehicle">
         <div class="image">
             <figure class="figure">
-                <img class="rounded" src="<?= base_url ?>uploads/images<?= $veh->imagen ?>" alt="Imagen de Prueba">
+                <img class="rounded" src="<?= base_url ?>uploads/<?= $veh->imagen ?>" alt="Imagen de Prueba">
             </figure>
         </div>
         <div class="data">
@@ -16,7 +16,7 @@
             <p>Stock: <?= $veh->stock ?></p>
         </div>
 
-        <button class="btn btn-success">Reservar</button>
+        <button class="btn btn-success"><a href="<?=base_url?>reserva/add&id=<?=$veh->id?>">Reservar</a></button>
     </div>
 
 

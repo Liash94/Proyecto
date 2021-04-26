@@ -1,8 +1,11 @@
 <?php
 
-class reservaController{
-    
+require_once 'models/vehiculo.php';
+
+class reservaController
+{
+
     public function index(){
-        echo "Controlador reservas, Accion index";
+        
     }
 }

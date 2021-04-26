@@ -16,7 +16,7 @@
                         <figcaption class="figure-caption text-end"><?= $veh->marca . " " . $veh->modelo . " " . $veh->precio ?></figcaption>
                     </figure>
                 </a>
-                    <a class="button" href="#">Reservar</a>
+                <a class="button" href="<?=base_url?>reserva/add&id=<?=$veh->id?>">Reservar</a>
                 </div>
             </div>
         <?php endwhile; ?>
