@@ -11,27 +11,31 @@
         <input type="text" name="vehiculo" class="form-control form-control-sm" value="<?= $vehiculo->getMarca() . '-' . $vehiculo->getModelo()?>" readonly>
         <input type="hidden" name="idVehiculo" value='<?= $vehiculo->getId()?>'>
     </div>
-
     <div class="mb-3">
-        <label for="marca" class="form-label"> Marca</label>
-        <input type="text" name="marca" placeholder="Marca" class="form-control form-control-sm" required>
+        <label for="precio" class="form-label"> F.Inicio</label>
+        <input type="text" name="fecha" class="form-control form-control-sm" id="fecha" required>
     </div>
     <div class="mb-3">
-        <label for="modelo" class="form-label"> Modelo</label>
-        <input type="text" name="modelo" placeholder="Modelo" class="form-control form-control-sm" r equired>
+        <label for="precio" class="form-label"> dias</label>
+        <input type="text" name="precio" class="form-control form-control-sm" required>
     </div>
     <div class="mb-3">
         <label for="precio" class="form-label"> Precio</label>
-        <input type="text" name="precio" placeholder="Precio" class="form-control form-control-sm" required>
+        <input type="text" name="precio" value="<?= $vehiculo->getPrecio()?>" class="form-control form-control-sm" readonly>
     </div>
     <div class="mb-3">
-        <label for="Stock" class="form-label"> Stock</label>
-        <input type="number" name="stock" class="form-control form-control-sm" required>
+        <img class="rounded" src="<?= base_url ?>uploads/images<?= $vehiculo->getImagen() ?>" alt="Imagen de Prueba">
     </div>
-    <div class="mb-3">
-        <label for="imagen" class="form-label">Imagen</label>
-        <input type="file" name="imagen">
-    </div>
+    <a class="button" href="<?=base_url?>vehiculos/ver&id=<?=$vehiculo->getId()?>">Reservar</a>
     <input type="submit" value="Añadir">
 
 </form>
+
+<script type="text/javascript">
+$(function() {
+    $('#fecha').datetpicker({
+        format: 'yyyy-mm-dd'
+    });
+});
+
+</script>

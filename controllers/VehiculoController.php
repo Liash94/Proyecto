@@ -11,8 +11,6 @@ class vehiculoController
         $vehiculo = new Vehiculo();
         $vehiculos = $vehiculo->getRandom(6);
 
-       
-
         require_once 'views/vehiculos/destacados.php';
     }
 
@@ -21,19 +19,14 @@ class vehiculoController
     public function ver(){
 
         Utils::isAdmin();
-       
-        /*
-        $veh = new Vehiculo($_GET['id']);
-        */
         if(isset($_GET['id'])){
             $id = $_GET['id'];
-            $vehiculo = new Vehiculo();
-            $vehiculo->setId($id);
-
-            $veh = $vehiculo->getOne();
-
-        }        
-        require_once 'views/vehiculos/ver.php';
+            $veh = new Vehiculo($id);
+            require_once 'views/vehiculos/ver.php';
+        } else {
+            header('Location:' . base_url);
+        }
+        
     }
 
     public function gestion()
