@@ -1,3 +1,4 @@
+  
  <!-- BARRA LATERAL -->
 
  <aside id="lateral">
@@ -8,7 +9,7 @@
 
          <?php if (!isset($_SESSION['identity'])) : ?>
              <h3> Loging </h3>
-             <form action="<?= base_url ?>usuario/login" method="POST">
+             <form action="<?=base_url?>usuario/login" method="POST">
 
                  <div class="mb-3">
                      <label for="email" class="form-label">Email </label>
@@ -37,10 +38,10 @@
                  <li><a href="<?=base_url?>vehiculo/gestion">Gestionar Vehiculos</a></li>
                  <li><a href="<?=base_url?>usuario/index">Gestionar Usuarios</a></li>
                  <li><a href="<?=base_url?>rol/index">Gestionar Roles</a></li>
-                 <li><a href="#">Gestionar Reservas</a></li>
+                 <li><a href="<?=base_url?>reserva/gestion">Gestionar Reservas</a></li>
              <?php endif; ?>
              <?php if (isset($_SESSION['identity'])) : ?>
-                 <li><a href="#">Mis Reservas</a></li>
+                 <li><a href="<?= base_url ?>reserva/index">Mis Reservas</a></li>
                  <li><a href="<?= base_url ?>usuario/logout">Cerrar Sesion</a></li>
              <?php else : ?>
                  <li><a href="<?= base_url ?>usuario/registro">Registrate Aquí</a></li>

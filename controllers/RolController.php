@@ -12,12 +12,13 @@ class rolController
         $rol = new Rol();
         $roles = $rol->getAll();
 
-
         require_once 'views/rol/index.php';
     }
 
     public function crear()
     {
+
+       
 
         Utils::isAdmin();
         require_once 'views/rol/crear.php';
@@ -35,7 +36,8 @@ class rolController
             $rol->setNombre($_POST['nombre']);
             $rol->save();
         }
-        header("Location:" . base_url . "rol/index");
+        // header("Location:" . base_url . "rol/index");
+        echo '<script>window.location="'.base_url.'/rol/index"</script>';
     }
 
     public function editar()
@@ -50,7 +52,8 @@ class rolController
         $rol->setNombre($_POST['nombre']);
        
         $rol->update();
-        header("Location:" . base_url . 'rol/index');
+        // header("Location:" . base_url . 'rol/index');
+        echo '<script>window.location="'.base_url.'/rol/index"</script>';
     }
 
     
@@ -64,7 +67,8 @@ class rolController
             $rol = new Rol();            
             $rol->setId($id);
             $rol->delete();
-         header("Location:" . base_url .'rol/index');
+        //  header("Location:" . base_url .'rol/index');
+        echo '<script>window.location="'.base_url.'/rol/index"</script>';
         }
 
      }

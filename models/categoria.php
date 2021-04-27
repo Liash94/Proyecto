@@ -33,6 +33,7 @@ class Categoria{
         $this->nombre = $this->db->real_escape_string($nombre);
     }
 
+    /* Metodo para obtener todas las categorias */
     public static function getAll(){
         $categoria = new Categoria();
         $reg = $categoria->db->query("SELECT id FROM categorias ORDER BY id ASC;");
@@ -44,11 +45,13 @@ class Categoria{
         return $array;
     }
 
+    /* Metodo para obtener una categoría */
     public function getOne(){
         $categoria = $this->db->query("SELECT * FROM categorias WHERE id={$this->getId()}");
         return $categoria->fetch_object();
     }
 
+    /* Metodo para insertar una categoría en la base de datos */
     public function save(){
        
         $sql = "INSERT INTO categorias VALUES(NULL, '{$this->getNombre()}');";
@@ -64,6 +67,7 @@ class Categoria{
     
     }
 
+    /* Metodo para actualizar una categoría */
     public function update()
     {
         $sql = "UPDATE categorias SET nombre='{$this->getNombre()}' WHERE id={$this->getId()};";
@@ -75,6 +79,7 @@ class Categoria{
         return false;
     }
     
+    /* Metodo para borrar una categoría */
     public function delete(){
 
         $sql = "DELETE FROM categorias WHERE id={$this->id}";

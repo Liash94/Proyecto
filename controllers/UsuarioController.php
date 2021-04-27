@@ -40,13 +40,16 @@ class usuarioController{
         $usu->setTelefono($_POST['telefono']);
         $usu->setRol($_POST['rol']);
         $usu->update();
-        header("Location:" . base_url . 'usuario/index');
+        // header("Location:" . base_url . 'usuario/index');
+         echo '<script>window.location="'.base_url.'/usuario/index"</script>';
     }
 
     public function eliminar() {
         $usuario = new Usuario($_GET['id']);
         $usuario->delete();
-        header("Location:".base_url. "usuario/index");
+        // header("Location:".base_url. "usuario/index");
+        echo '<script>window.location="'.base_url.'/usuario/index"</script>';
+
     }
 
     public function save(){
@@ -72,7 +75,9 @@ class usuarioController{
         }else{
             $_SESSION['register'] = "failed";
         }
-        header("Location:".base_url);
+        // header("Location:".base_url);
+        
+        echo '<script>window.location="'.base_url.'"</script>';
 
     }
 
@@ -100,7 +105,8 @@ class usuarioController{
            }           
 
         }
-        header("Location:".base_url);
+        // header("Location:".base_url);        
+        echo '<script>window.location="'.base_url.'"</script>';
     }
 
     public function logout(){
@@ -111,7 +117,8 @@ class usuarioController{
             unset($_SESSION['admin']);
         }
 
-        header("Location:".base_url);
+        // header("Location:".base_url);
+        echo '<script>window.location="'.base_url.'"</script>';
 
     }
 }

@@ -20,11 +20,8 @@ class vehiculoController
 
     public function ver(){
 
-        Utils::isAdmin();
-       
-        /*
-        $veh = new Vehiculo($_GET['id']);
-        */
+        Utils::isAdmin();       
+        
         if(isset($_GET['id'])){
             $id = $_GET['id'];
             $vehiculo = new Vehiculo();
@@ -96,7 +93,8 @@ class vehiculoController
                 $vehiculo->create();
             }
         }
-        header("Location:" . base_url . 'vehiculo/gestion');
+        // header("Location:" . base_url . 'vehiculo/gestion');
+        echo '<script>window.location="'.base_url.'vehiculo/gestion"</script>';
     }
 
     public function editar()
@@ -115,7 +113,8 @@ class vehiculoController
         $veh->setModelo($_POST['modelo']);
         $veh->setStock(($_POST['stock']) ? 1 : 0);
         $veh->update();
-        header("Location:" . base_url . 'vehiculo/gestion');
+        // header("Location:" . base_url . 'vehiculo/gestion');
+        echo '<script>window.location="'.base_url.'vehiculo/gestion"</script>';
     }
 
     public function eliminar()
@@ -127,7 +126,8 @@ class vehiculoController
             $vehiculo = new Vehiculo();
             $vehiculo->setId($id);
             $vehiculo->delete();
-         header("Location:" . base_url . 'vehiculo/gestion');
+        //  header("Location:" . base_url . 'vehiculo/gestion');
+             echo '<script>window.location="'.base_url.'vehiculo/gestion"</script>';
         }
 
      }

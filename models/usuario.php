@@ -103,6 +103,7 @@ class Usuario{
         return $rol->getNombre();
     }
 
+     /* Metodo para obtener todos los usuarios */
     public static function getAll()
     {
         $usuario = new Usuario();
@@ -118,6 +119,7 @@ class Usuario{
         return $array;
     }
 
+    /* Metodo para guardar un usuario en la base de datos  */
     public function save(){
         $sql = sprintf("INSERT INTO usuarios VALUES(NULL, '%s', '%s','%s','%s',%d,'%s',%d)",
                             $this->getNombre(),
@@ -138,6 +140,7 @@ class Usuario{
         return $result;
     }
 
+    /* Metodo para actualizar un usuario  */
     public function update() {
         $sql = sprintf("UPDATE usuarios SET nombre = '%s',
                                             apellidos = '%s',
@@ -158,18 +161,21 @@ class Usuario{
         return $this->db->query($sql);
     }
 
+     /* Metodo para borrar un usuario  */
     public function delete() {
         $sql = sprintf('DELETE FROM usuarios where id = %d', $this->getId());
         return $this->db->query($sql);
     }
 
+    /* Metodo para lograr hacer login en la aplicacion */ 
     public function login(){
         
         $result = false;
 
         $email = $this->email;
         $password = $this->password;
-        // Comprobar si Existe el usuario
+
+        // Primero: Comprueba que exista el usuario determinado haciendo una consulta en la base de datos
 
         $sql = "SELECT * FROM usuarios WHERE email = '$email'";
         $login = $this->db->query($sql);
@@ -177,7 +183,7 @@ class Usuario{
        if($login && $login->num_rows ==1){
            $usuario = $login->fetch_object();
 
-        // Verificar Contraseña
+            // Tras comprobarlo, comprueba si la contraseña existe, Si existe devuelve al usuari. 
             $verify = password_verify($password, $usuario->password);
         
 

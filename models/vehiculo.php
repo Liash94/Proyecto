@@ -126,12 +126,26 @@ class Vehiculo
 		return $vehiculo->fetch_object();
 	}
     
+    /* Metodo para obtener un vehiculo unicamente, se limita a 6 que son los mostrados en la url principal del proyecto */
     public function getRandom($limit)
     {
         $vehiculos = $this->db->query("SELECT * FROM vehiculos ORDER BY RAND() LIMIT $limit");
         return $vehiculos;
 
     }
+
+    
+    public function getAllReservas(){
+
+        $sql = "SELECT r.*, u.nombre FROM reserva r "
+                . "INNER JOIN usuarios u ON r.id_usuarios = u.id "
+                . "WHERE r.id_usuarios = {$this->getId()} "
+                . "ORDER BY id DESC";
+        $reservas = $this->db->query($sql);
+        return $reservas;
+   
+    }
+    /* Metodo para obtener todos los vehiculos  */
     public static function getAll()
     {
 
@@ -149,6 +163,7 @@ class Vehiculo
         return $array;
     }
 
+    /* Metodo para obtener todos los vehiculos de una determinada categoria */
     public function getAllCategory(){
 
         $sql = "SELECT v.*, c.nombre FROM vehiculos v "
@@ -160,6 +175,7 @@ class Vehiculo
 
     }
 
+    /* Metodo para obtener un vehiculo en concreto de una determinada categoria */
     public static function getByCategoria($id) {
         $sql = sprintf('SELECT v.id FROM vehiculos as v 
                 LEFT JOIN categorias c on c.id = v.categoria_id
@@ -175,6 +191,7 @@ class Vehiculo
         return $array;
     }
 
+    /* Metodo para crear un vehiculo  */
     public function create(){
 
         $sql = "INSERT INTO vehiculos VALUES(NULL, {$this->getCategoria_id()}, '{$this->getMatricula()}', {$this->getPrecio()}, '{$this->getMarca()}','{$this->getModelo()}', {$this->getStock()}, '{$this->getImagen()}');";
@@ -188,6 +205,7 @@ class Vehiculo
         return $result;
     }
 
+     /* Metodo para actualizar un vehiculo  */
     public function update()
     {
         $sql = sprintf("UPDATE vehiculos SET
@@ -207,6 +225,7 @@ class Vehiculo
         return false;
     }
 
+    /* Metodo para borrar un vehiculo  */
      public function delete(){
 
        $sql = "DELETE FROM vehiculos WHERE id={$this->id}";

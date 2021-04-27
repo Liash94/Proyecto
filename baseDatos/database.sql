@@ -1,3 +1,4 @@
+  
 CREATE DATABASE candc_rent_a_car;
 
 USE candc_rent_a_car;
@@ -64,22 +65,10 @@ CREATE TABLE reserva(
     Fecha_reserva date,
     dias int(3) not null,
     estado VARCHAR(20) not null,
+    coste VARCHAR(20) not null,
 
     CONSTRAINT pk_reserva PRIMARY KEY(Id),
     CONSTRAINT fk_reserva_usuarios FOREIGN KEY(id_usuarios) REFERENCES usuarios(id),    
     CONSTRAINT fk_reserva_vehiculos FOREIGN KEY(id_vehiculos) REFERENCES vehiculos(id)
 
 )ENGINE=InnoDb;
-
-INSERT INTO vehiculos VALUES(null,1, '7777AUX', '50', 'Renault', 'Clio', 1, '');
-INSERT INTO vehiculos VALUES(null,1, '7777AUX', '50', 'Renault', 'Clio', 1, '');
-INSERT INTO vehiculos VALUES(null,1, '7777AUX', '50', 'Renault', 'Clio', 1, '');
-INSERT INTO vehiculos VALUES(null,2, '7777AUX', '50', 'Renault', 'Clio', 1, '');
-INSERT INTO vehiculos VALUES(null,2, '7777AUX', '50', 'Renault', 'Clio', 1, '');
-INSERT INTO vehiculos VALUES(null,2, '7777AUX', '50', 'Renault', 'Clio', 1, '');
-INSERT INTO vehiculos VALUES(null,3, '7777AUX', '50', 'Renault', 'Clio', 1, '');
-INSERT INTO vehiculos VALUES(null,3, '7777AUX', '50', 'Renault', 'Clio', 1, '');
-INSERT INTO vehiculos VALUES(null,3, '7777AUX', '50', 'Renault', 'Clio', 1, '');
-INSERT INTO vehiculos VALUES(null,4, '7777AUX', '50', 'Renault', 'Clio', 1, '');
-INSERT INTO vehiculos VALUES(null,4, '7777AUX', '50', 'Renault', 'Clio', 1, '');
-INSERT INTO vehiculos VALUES(null,4, '7777AUX', '50', 'Renault', 'Clio', 1, '');

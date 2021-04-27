@@ -33,6 +33,7 @@ class Rol{
         $this->nombre = $this->db->real_escape_string($nombre);
     }
 
+    /* Metodo para actualizar todos los roles */
     public static function getAll(){
         $rol = new Rol();
         $reg = $rol->db->query("SELECT id FROM roles ORDER BY id ASC;");
@@ -44,6 +45,7 @@ class Rol{
         return $array;
     }
 
+    /* Metodo para crear un nuevo rol */
     public function save(){
        
         $sql = "INSERT INTO roles VALUES(NULL, '{$this->getNombre()}');";
@@ -59,6 +61,7 @@ class Rol{
     
     }
 
+     /* Metodo para actualizar un nuevo rol */
     public function update()
     {
         $sql = "UPDATE roles SET nombre='{$this->getNombre()}' WHERE id={$this->getId()};";
@@ -70,6 +73,8 @@ class Rol{
         return false;
     }
     
+    
+     /* Metodo para borrar un nuevo rol */
     public function delete(){
 
         $sql = "DELETE FROM roles WHERE id={$this->id}";
