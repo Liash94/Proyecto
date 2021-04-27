@@ -130,7 +130,15 @@ class Vehiculo
     public function getRandom($limit)
     {
         $vehiculos = $this->db->query("SELECT * FROM vehiculos ORDER BY RAND() LIMIT $limit");
-        return $vehiculos;
+
+        $array = array();
+
+        while($veh = $vehiculos->fetch_object()){
+            $aux = new Vehiculo($veh->id);
+            $array[$aux->getId()]=$aux;
+
+        }
+        return $array;
 
     }
 

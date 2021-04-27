@@ -80,4 +80,5 @@ class reservaController
             echo '<script>window.location="' . base_url . 'reserva/gestion"</script>';
         }
     }
+
 }

@@ -5,14 +5,14 @@
 <h1> Algunos vehiculos </h1>
 
 <!-- <//?php foreach ($vehiculos as $veh) { ?> -->
-<?php while ($veh = $vehiculos->fetch_object()) : ?>
+<?php foreach ($vehiculos as $veh) { ?>
 
     <div class="box">
         <div class="vehicle">
-            <a href="<?= base_url ?>vehiculo/ver&id=<?= $veh->id ?>">
+            <a href="<?= base_url ?>vehiculo/ver&id=<?= $veh->getId() ?>">
                 <figure class="figure">
-                    <img class="rounded" src="<?= base_url ?>uploads/images<?= $veh->imagen ?>" alt="Imagen de Prueba">
-                    <figcaption id="texto" class="figure-caption text-end"><?= $veh->marca . " " . $veh->modelo . " " . $veh->precio ?></figcaption>
+                    <img class="rounded" src="<?= base_url ?>uploads/images<?= $veh->getImagen() ?>" alt="Imagen de Prueba">
+                    <figcaption id="texto" class="figure-caption text-end"><?= $veh->getMarca() . " " . $veh->getModelo() ." " . $veh->getMarca() . " " . $veh->getPrecio() ?></figcaption>
                 </figure>
             </a>
             <a id="boton-destacados" class="button" href="<?=base_url?>reserva/add&id=<?=$veh->id?>">Reservar</a>
@@ -23,6 +23,6 @@
 
 
 
-<?php endwhile; ?>
+<?php } ?>
 <!--
 <//?php } ?> -->
